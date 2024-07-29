@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 function getSalesData() {
-    
+    db?.order
 }
 
 export default function AdminDashboard() {

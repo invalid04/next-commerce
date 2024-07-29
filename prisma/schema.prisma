@@ -21,6 +21,7 @@ model Product {
   createdAt               DateTime    @default(now())
   updatedAt               DateTime    @updatedAt
   orders Order[]
+  downloadVerifications DownloadVerification[]
 }
 
 model User {
@@ -47,4 +48,7 @@ model DownloadVerification {
   id                      String  @id @default(uuid())
   expiresAt               DateTime 
   createdAt               DateTime    @default(now())  
+
+  productId               String 
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }

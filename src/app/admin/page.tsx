@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import db from "@/db/db";
-import { formatNumber } from "@/lib/formatters";
+import { formatCurrency, formatNumber } from "@/lib/formatters";
 
 async function getSalesData() {
     const data = await db.order.aggregate({
@@ -22,7 +22,7 @@ export default async function AdminDashboard() {
             <DashboardCard 
                 title='Sales' 
                 subtitle={formatNumber(salesData.numberOfSales)}
-                body={salesData.amount}  
+                body={formatCurrency(salesData.amount)}  
             />
         </div>
     )

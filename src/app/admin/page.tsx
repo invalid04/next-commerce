@@ -42,7 +42,8 @@ async function getProductData() {
 export default async function AdminDashboard() {
     const [salesData, userData] = await Promise.all([
         getSalesData(),
-        getUserData()
+        getUserData(),
+        getProductData(),
     ])
 
     return (

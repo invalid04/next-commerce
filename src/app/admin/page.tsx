@@ -31,7 +31,10 @@ async function getUserData() {
 }
 
 export default async function AdminDashboard() {
-    const salesData = await getSalesData()
+    const [salesData, userData] = await Promise.all([
+        getSalesData(),
+        getUserData()
+    ])
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>

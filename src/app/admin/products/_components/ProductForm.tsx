@@ -36,6 +36,11 @@ export default function ProductForm() {
                 <Label htmlFor='description'>Description</Label>
                 <Textarea id='description' name='description' required />
             </div>
+
+            <div className='space-y-2'>
+                <Label htmlFor='file'>File</Label>
+                <Input type='file' id='file' name='file' required />
+            </div>
         </form>
     )
 }

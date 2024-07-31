@@ -3,6 +3,7 @@
 import db from "@/db/db"
 import { z } from "zod"
 import fs from 'fs/promises'
+import { redirect } from "next/navigation"
 
 const fileSchema = z.instanceof(File, { message: 'Required' })
 const imageSchema = fileSchema.refine(file => file.size === 0 || file.type.startsWith('image/'))
@@ -31,11 +32,13 @@ export async function addProduct(formData: FormData) {
     const imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`
     await fs.writeFile(`public${imagePath}`, Buffer.from(await data.image.arrayBuffer()))
 
-    db.product.create({ data: {
+    await db.product.create({ data: {
         name: data.name,
         description: data.description,
         priceInCents: data.priceInCents,
-        filePath: 
-        imagePath:
+        filePath,
+        imagePath
     }})
+
+    redirect('/admin/products')
 }

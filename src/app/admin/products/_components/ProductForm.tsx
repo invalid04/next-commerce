@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { formatCurrency } from "@/lib/formatters"
 import { useState } from "react"
 import { addProduct } from "../../_actions/products"
+import { useFormStatus } from "react-dom"
 
 export default function ProductForm() {
     const [priceInCents, setPriceInCents] = useState<number>()
@@ -49,9 +50,20 @@ export default function ProductForm() {
                 <Input type='file' id='image' name='image' required />
             </div>
 
-            <Button type='submit'>
-                Add Product
-            </Button>
+            <SubmitButton />
         </form>
+    )
+}
+
+function SubmitButton() {
+    const { pending } = useFormStatus()
+
+    return (
+        <Button 
+            type='submit'
+            disabled={pending}
+        >
+            {pending ? 'Creating...' : 'Add Product'}
+        </Button>
     )
 }

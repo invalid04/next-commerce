@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { PageHeader } from "../_components/pageHeader";
+import { PageHeader } from "../_components/PageHeader";
 import Link from "next/link";
-import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default function AdminProductsPage() {
     return (
@@ -14,6 +14,7 @@ export default function AdminProductsPage() {
                     </Link>
                 </Button>
             </div>
+            <ProductsTable />
         </>
     )
 }
@@ -34,6 +35,10 @@ function ProductsTable() {
                     </TableHead>
                 </TableRow>
             </TableHeader>
+
+            <TableBody>
+
+            </TableBody>
         </Table>
     )
 }

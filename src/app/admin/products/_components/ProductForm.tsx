@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { formatCurrency } from "@/lib/formatters"
 import { useState } from "react"
 
 export default function ProductForm() {
@@ -24,6 +25,10 @@ export default function ProductForm() {
                     value={priceInCents}
                     onChange={e => setPriceInCents(Number(e.target.value) || undefined)}
                 />
+            </div>
+
+            <div className='text-muted-foreground'>
+                {formatCurrency((priceInCents || 0) / 100)}
             </div>
         </form>
     )

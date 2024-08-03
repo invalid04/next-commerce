@@ -3,7 +3,7 @@ import db from "@/db/db"
 function getNewestProducts() {
     return db.product.findMany({
         where: { isAvailableForPurchase: true },
-        orderBy: { orders: { _count: 'desc' } },
+        orderBy: { createdAt: 'desc' },
         take: 6
     })
 }

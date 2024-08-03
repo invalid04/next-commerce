@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button"
 import db from "@/db/db"
 import { Product } from "@prisma/client"
+import Link from "next/link"
 
 function getMostPopularProducts() {
     return db.product.findMany({
@@ -26,9 +28,21 @@ export default function HomePage() {
 }
 
 type ProductGridSectionProps = {
+    title: string
     productsFetcher: () => Promise<Product[]>
 }
 
-function ProductGridSection() {
-
+function ProductGridSection({ productsFetcher, title}: ProductGridSectionProps) {
+    return (
+        <div className='space-y-4'>
+            <div className='flex gap-4'>
+                <h2 className='text-3xl font-bold'>
+                    {title}
+                </h2>
+                <Button asChild>
+                    <Link href='/products'>View All</Link>
+                </Button>
+            </div>
+        </div>
+    )
 }

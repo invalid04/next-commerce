@@ -5,6 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import db from "@/db/db";
 import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
+import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 export default function AdminProductsPage() {
     return (
@@ -72,8 +73,12 @@ async function ProductsTable() {
                         <TableCell>{formatCurrency(product.priceInCents / 100)}</TableCell>
                         <TableCell>{formatNumber(product._count.orders)}</TableCell>
                         <TableCell>
-                            <MoreVertical />
-                            <span className='sr-only'>Actions</span>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger>
+                                    <MoreVertical />
+                                    <span className='sr-only'>Actions</span>
+                                </DropdownMenuTrigger>
+                            </DropdownMenu>
                         </TableCell>
                     </TableRow>
                 ))}

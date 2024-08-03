@@ -23,7 +23,13 @@ export default function ProductForm({
         <form action={action} className='space-y-8'>
             <div className='space-y-2'>
                 <Label htmlFor='name'>Name</Label>
-                <Input type='text' id='name' name='name' required />
+                <Input 
+                    type='text' 
+                    id='name' 
+                    name='name' 
+                    required 
+                    defaultValue={product?.name || ''}
+                />
                 {error.name && <div className='text-destructive'>{error.name}</div>}
             </div>
 
@@ -35,7 +41,6 @@ export default function ProductForm({
                     name='priceInCents' 
                     required 
                     value={priceInCents}
-                    defaultValue={product?.name || ''}
                     onChange={e => setPriceInCents(Number(e.target.value) || undefined)}
                 />
             </div>
@@ -59,6 +64,9 @@ export default function ProductForm({
             <div className='space-y-2'>
                 <Label htmlFor='file'>File</Label>
                 <Input type='file' id='file' name='file' required={product === null} />
+                {product != null && (
+                    <div className='text-muted-foreground'>{product.filePath}</div>
+                )}
                 {error.file && <div className='text-destructive'>{error.file}</div>}
             </div>
 

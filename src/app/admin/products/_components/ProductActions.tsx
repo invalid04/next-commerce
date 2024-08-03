@@ -1,4 +1,5 @@
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { useTransition } from "react";
 
 export function ActiveToggleDropdownItem({
     id,
@@ -7,8 +8,15 @@ export function ActiveToggleDropdownItem({
     id: string 
     isAvailableForPurchase: boolean
 }) {
+    const [isPending, startTransition] = useTransition()
     return (
-        <DropdownMenuItem>
+        <DropdownMenuItem
+            onClick={() => {
+                startTransition(async () => {
+                    await toggleProductAvailability(id, !isAvailableForPurchase)
+                })
+            }}
+        >
 
         </DropdownMenuItem>
     )

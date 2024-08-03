@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import db from "@/db/db"
 import { Product } from "@prisma/client"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 function getMostPopularProducts() {
@@ -39,8 +40,13 @@ function ProductGridSection({ productsFetcher, title}: ProductGridSectionProps) 
                 <h2 className='text-3xl font-bold'>
                     {title}
                 </h2>
-                <Button asChild>
-                    <Link href='/products'>View All</Link>
+                <Button variant='outline' asChild>
+                    <Link href='/products' className='space-x-2'>
+                       <span>
+                            View All
+                       </span>
+                       <ArrowRight className='size-4' />
+                    </Link>
                 </Button>
             </div>
         </div>

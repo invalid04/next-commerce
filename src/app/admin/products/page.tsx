@@ -95,7 +95,10 @@ async function ProductsTable() {
                                         id={product.id}
                                         isAvailableForPurchase={product.isAvailableForPurchase}
                                     />
-                                    {/* <DeleteToggleDropdownItem /> */}
+                                    <DeleteToggleDropdownItem 
+                                        id={product.id}
+                                        disabled={product._count.orders > 0}
+                                    />
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

@@ -13,9 +13,9 @@ import { Product } from "@prisma/client"
 export default function ProductForm({ 
     product
 }: {
-    product?: Product
+    product?: Product | null
 }) {
-    
+
     const [error, action] = useFormState(addProduct, {})
     const [priceInCents, setPriceInCents] = useState<number>()
 

@@ -24,7 +24,12 @@ function getNewestProducts() {
 export default function HomePage() {
     return (
         <main className='space-y-12'>
+            <ProductGridSection 
+                productsFetcher={getMostPopularProducts} 
+                title='Most Popular' 
+            />
 
+            <ProductGridSection productsFetcher={getMostPopularProducts} title='Most Popular' />
         </main>
     )
 }

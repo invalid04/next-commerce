@@ -1,7 +1,9 @@
 import { formatCurrency } from "@/lib/formatters";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
-export function ProductCard({ name, priceInCents, description }) {
+export function ProductCard({ id, name, priceInCents, description }) {
     return (
         <Card className='flex overflow-hidden flex-col'>
             <CardHeader>
@@ -15,6 +17,13 @@ export function ProductCard({ name, priceInCents, description }) {
             <CardContent className='flex-grow'>
                 <p className='line-clamp-4'>{description}</p>
             </CardContent>
+            <CardFooter>
+                <Button asChild size='lg' className='w-full'>
+                    <Link href={`/purchase/${id}/purchase`}>
+                        Purchase
+                    </Link>
+                </Button>
+            </CardFooter>
         </Card>
     )
 }

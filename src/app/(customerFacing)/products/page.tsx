@@ -1,4 +1,13 @@
+import db from "@/db/db";
 import { Suspense } from "react";
+
+function getProducts() {
+    return db.product.findMany({
+        where: {
+            isAvailableForPurchase: true
+        }
+    })
+}
 
 export function ProductPage() {
     return (
@@ -14,4 +23,8 @@ export function ProductPage() {
         </Suspense>
     </div>
     )
+}
+
+function ProductsSuspense() {
+
 }

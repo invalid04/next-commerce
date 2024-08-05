@@ -1,3 +1,4 @@
+import { ProductCardSkeleton } from "@/components/ProductCard";
 import db from "@/db/db";
 import { Suspense } from "react";
 

@@ -35,7 +35,7 @@ export function ProductCard({ id, name, priceInCents, description, imagePath }: 
             </CardContent>
             <CardFooter>
                 <Button asChild size='lg' className='w-full'>
-                    <Link href={`/purchase/${id}/purchase`}>
+                    <Link href={`/products/${id}/purchase`}>
                         Purchase
                     </Link>
                 </Button>

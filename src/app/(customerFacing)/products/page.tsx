@@ -1,4 +1,4 @@
-import { ProductCardSkeleton } from "@/components/ProductCard";
+import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import db from "@/db/db";
 import { Suspense } from "react";
 
@@ -20,12 +20,16 @@ export function ProductPage() {
                 <ProductCardSkeleton />
             </>
         }>
-            <ProductsSuspense productsFetcher={productsFetcher} />
+            <ProductsSuspense />
         </Suspense>
     </div>
     )
 }
 
-function ProductsSuspense() {
+async function ProductsSuspense() {
+    const products = await getProducts()
 
+    return products.map(product => (
+        <ProductCard key={product.id} {...product} />
+    ))
 }

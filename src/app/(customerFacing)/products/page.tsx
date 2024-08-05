@@ -6,6 +6,9 @@ function getProducts() {
     return db.product.findMany({
         where: {
             isAvailableForPurchase: true
+        },
+        orderBy: {
+            name: 'asc'
         }
     })
 }

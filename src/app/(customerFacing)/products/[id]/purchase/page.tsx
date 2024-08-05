@@ -2,6 +2,7 @@ import db from "@/db/db"
 import { notFound } from "next/navigation"
 
 import Stripe from 'stripe'
+import { CheckoutForm } from "./_components/CheckoutForm"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
 
@@ -27,7 +28,7 @@ export default async function PurchasePage({
     }
 
     return (
-        <CheckoutForm 
+        <CheckoutForm
             product={product} 
             clientSecret={paymentIntent.client_secret} 
         />

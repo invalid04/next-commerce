@@ -71,6 +71,10 @@ function Form({
         if (stripe == null || elements == null) return
 
         setIsLoading(true)
+
+        stripe.confirmPayment({ elements, confirmParams: {
+            return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success`
+        }})
     }
 
     return (

@@ -94,9 +94,11 @@ function Form({
                     <CardTitle>
                         Checkout
                     </CardTitle>
-                    <CardDescription className='text-destructive'>
-                        Error
-                    </CardDescription>
+                    {errorMessage && (
+                        <CardDescription className='text-destructive'>
+                            {errorMessage}
+                        </CardDescription>
+                    )}
                 </CardHeader>
 
                 <CardContent>

@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatCurrency } from '@/lib/formatters'
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
@@ -53,9 +55,38 @@ export function CheckoutForm({
     )
 }
 
-function Form() {
+function Form({ 
+    priceInCents 
+}: {
+    priceInCents: number
+}) {
     const stripe = useStripe()
     const elements = useElements()
 
-    return <PaymentElement />
+    return (
+        <Card>
+            <CardHeader>
+                <CardTitle>
+                    Checkout
+                </CardTitle>
+                <CardDescription className='text-destructive'>
+                    Error
+                </CardDescription>
+            </CardHeader>
+
+            <CardContent>
+                <PaymentElement />
+            </CardContent>
+
+            <CardFooter>
+                <Button
+                    className='w-full'
+                    size='lg'
+                    disabled={stripe == null || elements == null}
+                >
+                    Purchase - {formatCurrency(priceInCents / 100)}
+                </Button>
+            </CardFooter>
+        </Card>
+    )
 }

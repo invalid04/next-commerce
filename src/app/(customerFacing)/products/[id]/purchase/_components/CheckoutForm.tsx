@@ -23,9 +23,11 @@ export function CheckoutForm({
     return (
         <>
             <div className='max-w-5xl w-full mx-auto space-y-8'>
-                <div>
+                <div className='aspect-video flex-shrink-0 w-1/3 relative'>
                     <Image 
                         src={product.imagePath}
+                        fill 
+                        alt={product.name}
                     />
                 </div>
                 <Elements options={{ clientSecret }} stripe={stripePromise}>

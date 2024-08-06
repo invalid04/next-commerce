@@ -50,28 +50,42 @@ export function CheckoutForm({
             </div>
             
             <Elements options={{ clientSecret }} stripe={stripePromise}>
-                <Form priceInCents={product.priceInCents} />
+                <Form 
+                    priceInCents={product.priceInCents}
+                    productId={product.id} 
+                />
             </Elements>    
         </div>    
     )
 }
 
 function Form({ 
-    priceInCents 
+    priceInCents,
+    productId
 }: {
     priceInCents: number
+    productId: string
 }) {
     const stripe = useStripe()
     const elements = useElements()
     const [isLoading, setIsLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState<string>()
+    const [email, setEmail] = useState<string>()
 
-    function handleSubmit(e: FormEvent) {
+    async function handleSubmit(e: FormEvent) {
         e.preventDefault()
 
-        if (stripe == null || elements == null) return
+        if (stripe == null || elements == null || email == null) return
 
         setIsLoading(true)
+
+        const orderExists = await userOrderExists(email, productId)
+
+        if (orderExists) {
+            setErrorMessage('You already have purchased this item. Check your My Orders page for the download link.')
+            setIsLoading(false)
+            return
+        }
 
         stripe.confirmPayment({ 
             elements, 
@@ -104,7 +118,9 @@ function Form({
                 <CardContent>
                     <PaymentElement />
                     <div className='mt-4'>
-                        <LinkAuthenticationElement />
+                        <LinkAuthenticationElement 
+                            onChange={e => setEmail(e.value.email)}
+                        />
                     </div>
                 </CardContent>
 

@@ -53,7 +53,7 @@ export default async function SuccessPage({
                     </div>
                     <Button>
                         {isSuccess 
-                            ? <a></a>
+                            ? <a href={`/products/download/${createDownloadVerification(product.id)}`}></a>
                             : <Link href={`/products/${product.id}/purchase`}>Try Again</Link>
                         }
                     </Button>
@@ -61,4 +61,10 @@ export default async function SuccessPage({
             </div>
         </div>    
     )
+}
+
+function createDownloadVerification(productId: string) {
+    return db.downloadVerification.create({
+        data: { productId, expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+    })
 }

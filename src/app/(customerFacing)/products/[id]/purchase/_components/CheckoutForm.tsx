@@ -49,7 +49,7 @@ export function CheckoutForm({
             </div>
             
             <Elements options={{ clientSecret }} stripe={stripePromise}>
-                <Form />
+                <Form priceInCents={product.priceInCents} />
             </Elements>    
         </div>    
     )

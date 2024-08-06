@@ -6,6 +6,7 @@ import { formatCurrency } from '@/lib/formatters'
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import Image from 'next/image'
+import { FormEvent, useState } from 'react'
 
 type CheckoutFormProps = {
     product: {
@@ -62,31 +63,45 @@ function Form({
 }) {
     const stripe = useStripe()
     const elements = useElements()
+    const [isLoading, setIsLoading] = useState(false)
+
+    function handleSubmit(e: FormEvent) {
+        e.preventDefault()
+
+        if (stripe == null || elements == null) return
+
+        setIsLoading(true)
+    }
 
     return (
-        <Card>
-            <CardHeader>
-                <CardTitle>
-                    Checkout
-                </CardTitle>
-                <CardDescription className='text-destructive'>
-                    Error
-                </CardDescription>
-            </CardHeader>
+        <form onSubmit={handleSubmit}>
+            <Card>
+                <CardHeader>
+                    <CardTitle>
+                        Checkout
+                    </CardTitle>
+                    <CardDescription className='text-destructive'>
+                        Error
+                    </CardDescription>
+                </CardHeader>
 
-            <CardContent>
-                <PaymentElement />
-            </CardContent>
+                <CardContent>
+                    <PaymentElement />
+                </CardContent>
 
-            <CardFooter>
-                <Button
-                    className='w-full'
-                    size='lg'
-                    disabled={stripe == null || elements == null}
-                >
-                    Purchase - {formatCurrency(priceInCents / 100)}
-                </Button>
-            </CardFooter>
-        </Card>
+                <CardFooter>
+                    <Button
+                        className='w-full'
+                        size='lg'
+                        disabled={stripe == null || elements == null || isLoading}
+                    >
+                        {isLoading 
+                            ? 'Purchasing...' 
+                            : `Purchase - ${formatCurrency(priceInCents / 100)}`
+                        }
+                    </Button>
+                </CardFooter>
+            </Card>
+        </form>
     )
 }

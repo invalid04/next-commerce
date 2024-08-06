@@ -29,6 +29,7 @@ export function CheckoutForm({
                             src={product.imagePath}
                             fill 
                             alt={product.name}
+                            className='object-cover'
                         />
                     </div>
 

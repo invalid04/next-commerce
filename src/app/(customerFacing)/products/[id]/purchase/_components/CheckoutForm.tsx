@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatCurrency } from '@/lib/formatters'
-import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { Elements, LinkAuthenticationElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import Image from 'next/image'
 import { FormEvent, useState } from 'react'
@@ -103,6 +103,9 @@ function Form({
 
                 <CardContent>
                     <PaymentElement />
+                    <div className='mt-4'>
+                        <LinkAuthenticationElement />
+                    </div>
                 </CardContent>
 
                 <CardFooter>

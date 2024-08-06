@@ -2,9 +2,15 @@
 
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import Image from 'next/image'
 
 type CheckoutFormProps = {
-    product: {}
+    product: {
+        imagePath: string 
+        name: string 
+        priceInCents: number 
+        description: string
+    }
     clientSecret: string
 }
 
@@ -15,9 +21,18 @@ export function CheckoutForm({
     clientSecret
 }: CheckoutFormProps) {
     return (
-        <Elements options={{ clientSecret }} stripe={stripePromise}>
-            <Form />
-        </Elements>
+        <>
+            <div className='max-w-5xl w-full mx-auto space-y-8'>
+                <div>
+                    <Image 
+                        src={product.imagePath}
+                    />
+                </div>
+                <Elements options={{ clientSecret }} stripe={stripePromise}>
+                    <Form />
+                </Elements>    
+            </div>    
+        </>
     )
 }
 

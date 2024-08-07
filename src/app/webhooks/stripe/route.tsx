@@ -46,6 +46,11 @@ export async function POST(req: NextRequest) {
             }
         })
 
-
+        resend.emails.send({
+            from: 
+            to: email,
+            subject: 'Order Confirmation',
+            react: <h1>hi</h1>,
+        })
     }
 }

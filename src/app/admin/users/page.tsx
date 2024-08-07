@@ -62,7 +62,7 @@ async function UsersTable() {
                                 </DropdownMenuTrigger>
 
                                 <DropdownMenuContent>
-                                    <DeleteDropDownItem />
+                                    <DeleteDropDownItem id={user.id} />
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

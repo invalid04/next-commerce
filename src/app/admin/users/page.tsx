@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import db from "@/db/db"
 import { formatCurrency, formatNumber } from "@/lib/formatters"
 import { MoreVertical } from "lucide-react"
+import { PageHeader } from "../_components/PageHeader"
 
 function getUsers() {
     return db.user.findMany({
@@ -17,7 +18,10 @@ function getUsers() {
 
 export default function UsersPage() {
     return (
-        <UsersTable />
+        <>
+            <PageHeader>Customers</PageHeader>
+            <UsersTable />
+        </>
     )
 }
 

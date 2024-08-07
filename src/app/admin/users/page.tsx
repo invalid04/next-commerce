@@ -4,6 +4,7 @@ import db from "@/db/db"
 import { formatCurrency, formatNumber } from "@/lib/formatters"
 import { MoreVertical } from "lucide-react"
 import { PageHeader } from "../_components/PageHeader"
+import { DeleteDropDownItem } from "./_components/UserActions"
 
 function getUsers() {
     return db.user.findMany({
@@ -61,7 +62,7 @@ async function UsersTable() {
                                 </DropdownMenuTrigger>
 
                                 <DropdownMenuContent>
-                                    <p>coming soon</p>
+                                    <DeleteDropDownItem />
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

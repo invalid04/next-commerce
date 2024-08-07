@@ -1,15 +1,25 @@
+import { deleteUser } from "@/app/actions/users"
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
 
-export function DeleteDropDownItem() {
+export function DeleteDropDownItem({
+    id
+}: {
+    id: string
+}) {
     const [isPending, startTransition] = useTransition()
     const router = useRouter()
 
     return (
         <DropdownMenuItem
             disabled={isPending}
-            
+            onClick={() => 
+                startTransition(async () => {
+                    await deleteUser(id)
+                    router.refresh()
+                })
+            }
         >
             Delete
         </DropdownMenuItem>

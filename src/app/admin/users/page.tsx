@@ -16,3 +16,9 @@ export default function UsersPage() {
         <h1>hi</h1>
     )
 }
+
+async function UsersTable() {
+    const users = await getUsers()
+
+    if (users.length === 0) return <p>No customers found</p>
+}

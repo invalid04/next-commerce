@@ -1,8 +1,10 @@
 import db from "@/db/db";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { Resend } from 'resend'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
+const resend = new Resend(process.env.RESEND_API_KEY as string)
 
 export async function POST(req: NextRequest) {
     const event = stripe.webhooks.constructEvent(
@@ -44,6 +46,6 @@ export async function POST(req: NextRequest) {
             }
         })
 
-        
+
     }
 }

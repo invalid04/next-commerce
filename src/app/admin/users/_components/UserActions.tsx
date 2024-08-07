@@ -1,3 +1,5 @@
+'use client'
+
 import { deleteUser } from "@/app/actions/users"
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { useRouter } from "next/navigation"

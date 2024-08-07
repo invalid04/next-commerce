@@ -24,5 +24,17 @@ export async function POST(req: NextRequest) {
         if (product == null || email == null) {
             return new NextResponse('Bad Request', { status: 400 })
         }
+
+        const userFields = {
+            email,
+            orders: { create: { productId, pricePaidInCents } }
+        }
+
+        const { orders: [order] } = await db.user.upsert({
+            where: { email },
+            create: userFields,
+            update: userFields,
+            select: { orders: { orderBy: { createdAt: 'desc' }, take: 1 }}
+        })
     }
 }

@@ -1,5 +1,5 @@
 import db from "@/db/db";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
@@ -21,6 +21,8 @@ export async function POST(req: NextRequest) {
             where: { id: productId}
         })
 
-        
+        if (product == null || email == null) {
+            return new NextResponse('Bad Request', { status: 400 })
+        }
     }
 }

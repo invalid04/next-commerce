@@ -61,7 +61,7 @@ async function OrdersTable() {
                                 </DropdownMenuTrigger>
 
                                 <DropdownMenuContent>
-                                    <DeleteDropDownItem />
+                                    <DeleteDropDownItem id={order.id} />
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

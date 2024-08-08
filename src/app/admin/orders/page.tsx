@@ -1,3 +1,4 @@
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import db from "@/db/db"
 
 function getOrders() {
@@ -14,6 +15,27 @@ function getOrders() {
 
 export default function OrdersPage() {
     return (
-        <h1>Order</h1>
+        <OrdersTable />
+    )
+}
+
+async function OrdersTable() {
+    const orders = await getOrders()
+
+    if (orders.length === 0) return <p>No sales found</p>
+
+    return (
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead>Product</TableHead>
+                    <TableHead>Customer</TableHead>
+                    <TableHead>Price Paid</TableHead>
+                    <TableHead className='w-0'>
+                        <span className='sr-only'>Actions</span>
+                    </TableHead>
+                </TableRow>
+            </TableHeader>
+        </Table>
     )
 }

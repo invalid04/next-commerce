@@ -4,6 +4,7 @@ import db from "@/db/db"
 import { formatCurrency } from "@/lib/formatters"
 import { MoreVertical } from "lucide-react"
 import { PageHeader } from "../_components/PageHeader"
+import { DeleteDropDownItem } from "./_components/OrderActions"
 
 function getOrders() {
     return db.order.findMany({
@@ -60,7 +61,7 @@ async function OrdersTable() {
                                 </DropdownMenuTrigger>
 
                                 <DropdownMenuContent>
-                                    <h1>hi</h1>
+                                    <DeleteDropDownItem />
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

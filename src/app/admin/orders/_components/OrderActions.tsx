@@ -3,6 +3,7 @@
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
+import { deleteOrder } from "../../_actions/orders"
 
 export function DeleteDropDownItem({
     id
@@ -14,7 +15,15 @@ export function DeleteDropDownItem({
     const router = useRouter()
 
     return (
-        <DropdownMenuItem>
+        <DropdownMenuItem
+            disabled={isPending}
+            onClick={() => 
+                startTransition(async () => {
+                    await deleteOrder(id)
+                    router.refresh()
+                })
+            }
+        >
             Delete
         </DropdownMenuItem>
     )

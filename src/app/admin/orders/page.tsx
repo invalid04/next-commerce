@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import db from "@/db/db"
 import { formatCurrency } from "@/lib/formatters"
 import { MoreVertical } from "lucide-react"
+import { PageHeader } from "../_components/PageHeader"
 
 function getOrders() {
     return db.order.findMany({
@@ -18,7 +19,10 @@ function getOrders() {
 
 export default function OrdersPage() {
     return (
-        <OrdersTable />
+        <>
+            <PageHeader>Sales</PageHeader>
+            <OrdersTable />
+        </>
     )
 }
 

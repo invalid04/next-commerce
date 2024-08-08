@@ -1,9 +1,15 @@
 import { Body, Container, Head, Heading, Html, Preview, Tailwind } from '@react-email/components'
 import OrderInformation from './components/OrderInformation'
 
+type PurchaseReceiptEmailProps = {
+    product: {
+        name: string
+    }
+}
+
 export default function PurchaseReceiptEmail({
     product
-}) {
+}: PurchaseReceiptEmailProps) {
     return (
         <Html>
             <Preview>

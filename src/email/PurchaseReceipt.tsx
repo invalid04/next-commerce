@@ -1,4 +1,4 @@
-import { Body, Head, Html, Preview, Tailwind } from '@react-email/components'
+import { Body, Container, Head, Heading, Html, Preview, Tailwind } from '@react-email/components'
 
 export default function PurchaseReceiptEmail({
     product
@@ -10,9 +10,11 @@ export default function PurchaseReceiptEmail({
             </Preview>
             <Tailwind>
                 <Head />
-                
-                <Body>
 
+                <Body className='font-sans bg-white'>
+                    <Container className='max-w-xl'>
+                        <Heading>Purchase Receipt</Heading>
+                    </Container>
                 </Body>
             </Tailwind>
         </Html>

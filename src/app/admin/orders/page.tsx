@@ -1,5 +1,8 @@
-import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import db from "@/db/db"
+import { formatCurrency } from "@/lib/formatters"
+import { MoreVertical } from "lucide-react"
 
 function getOrders() {
     return db.order.findMany({
@@ -36,6 +39,30 @@ async function OrdersTable() {
                     </TableHead>
                 </TableRow>
             </TableHeader>
+
+            <TableBody>
+                {orders.map(order => (
+                    <TableRow key={order.id}>
+                        <TableCell>{order.product.name}</TableCell>
+                        <TableCell>{order.user.email}</TableCell>
+                        <TableCell>
+                            {formatCurrency(order.pricePaidInCents / 100)}
+                        </TableCell>
+                        <TableCell>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger>
+                                    <MoreVertical />
+                                    <span className='sr-only'>Actions</span>
+                                </DropdownMenuTrigger>
+
+                                <DropdownMenuContent>
+                                    <h1>hi</h1>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
         </Table>
     )
 }

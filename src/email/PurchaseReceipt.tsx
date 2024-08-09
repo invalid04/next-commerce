@@ -5,6 +5,11 @@ type PurchaseReceiptEmailProps = {
     product: {
         name: string
     }
+    order: {
+        id: string;
+        createdAt: Date;
+        pricePaidInCents: number;
+    }
 }
 
 PurchaseReceiptEmail.PreviewProps = {
@@ -14,7 +19,8 @@ PurchaseReceiptEmail.PreviewProps = {
 } satisfies PurchaseReceiptEmailProps
 
 export default function PurchaseReceiptEmail({
-    product
+    product,
+    order,
 }: PurchaseReceiptEmailProps) {
     return (
         <Html>

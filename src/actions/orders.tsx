@@ -1,6 +1,7 @@
 'use server'
 
 import db from "@/db/db";
+import OrderHistoryEmail from "@/email/OrderHistory";
 import { Resend } from "resend";
 import { z } from "zod";
 
@@ -68,7 +69,7 @@ export async function emailOrderHistory(
         from: `Support <${process.env.SENDER_EMAIL}>`,
         to: user.email,
         subject: 'Order History',
-        react: <OrderHistoryEmail />
+        react: <OrderHistoryEmail orders={await Promise.all(orders)} />
     })
 
     if (data.error) {

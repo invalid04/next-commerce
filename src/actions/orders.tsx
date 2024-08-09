@@ -11,5 +11,11 @@ export async function emailOrderHistory(
     message?: string; 
     error?: string 
 }> {
-    
+    const result = emailSchema.safeParse(formData.get('email'))
+
+    if (result.success === false) {
+        return {
+            error: 'Invalid email address'
+        }
+    }
 }

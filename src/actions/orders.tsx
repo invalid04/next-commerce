@@ -42,6 +42,12 @@ export async function emailOrderHistory(
         }
     })
 
+    if (user == null) {
+        return {
+            message: 'check your email to view order history and download links'
+        }
+    }
+
     return {
         message: ''
     }

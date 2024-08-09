@@ -71,7 +71,13 @@ export async function emailOrderHistory(
         react: <OrderHistoryEmail />
     })
 
+    if (data.error) {
+        return {
+            error: 'There was an error sending your email. Please try again.'
+        }
+    }
+
     return {
-        message: ''
+        message: 'Check your email to view your order history and download links'
     }
 }

@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/lib/formatters"
 import { Column, Row, Section, Text } from "@react-email/components"
 
 type OrderInformationProps = {
@@ -40,10 +41,10 @@ export default function OrderInformation({
                     <Text 
                         className='mb-0 text-gray-500 whitespace-nowrap text-nowrap mr-4'
                     >
-                        Order ID
+                        Price Paid
                     </Text>
                     <Text className='mt-0 mr-4'>
-                        {order.id}
+                        {formatCurrency(order.pricePaidInCents / 100)}
                     </Text>
                 </Column>
             </Row>

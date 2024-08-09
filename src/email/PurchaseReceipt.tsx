@@ -10,6 +10,7 @@ type PurchaseReceiptEmailProps = {
         createdAt: Date;
         pricePaidInCents: number;
     }
+    downloadVerificationId: string
 }
 
 PurchaseReceiptEmail.PreviewProps = {
@@ -19,13 +20,15 @@ PurchaseReceiptEmail.PreviewProps = {
     order: {
         id: crypto.randomUUID(),
         createdAt: new Date(),
-        pricePaidInCents: 10000
+        pricePaidInCents: 10000,
     }
+    
 } satisfies PurchaseReceiptEmailProps
 
 export default function PurchaseReceiptEmail({
     product,
     order,
+    downloadVerificationId,
 }: PurchaseReceiptEmailProps) {
     return (
         <Html>

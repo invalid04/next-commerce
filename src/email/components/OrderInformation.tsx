@@ -2,7 +2,11 @@ import { formatCurrency } from "@/lib/formatters"
 import { Column, Row, Section, Text } from "@react-email/components"
 
 type OrderInformationProps = {
-    order: {}
+    order: {
+        id: string;
+        createdAt: Date;
+        pricePaidInCents: number;
+    }
     product: {}
     downloadVerificationId: string
 }

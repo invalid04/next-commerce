@@ -1,3 +1,5 @@
+import { Html, Preview } from "@react-email/components"
+
 type OrderHistoryEmailProps = {
     orders: {
         id: string
@@ -43,6 +45,8 @@ export default function OrderHistoryEmail({
     orders
 }: OrderHistoryEmailProps) {
     return (
-        <h1>hi</h1>
+        <Html>
+            <Preview>Order History & Downloads</Preview>
+        </Html>
     )
 }

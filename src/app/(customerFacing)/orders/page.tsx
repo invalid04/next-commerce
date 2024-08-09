@@ -29,8 +29,16 @@ export default function MyOrdersPage() {
                     </div>
                 </CardContent>
 
-                <CardFooter></CardFooter>
+                <CardFooter>
+                    <SubmitButton />
+                </CardFooter>
             </Card>
         </form>
+    )
+}
+
+function SubmitButton() {
+    return (
+        <h1>hi</h1>
     )
 }

@@ -3,12 +3,14 @@ import { Column, Img, Row, Section, Text } from "@react-email/components"
 
 type OrderInformationProps = {
     order: {
-        id: string;
-        createdAt: Date;
-        pricePaidInCents: number;
+        id: string,
+        createdAt: Date,
+        pricePaidInCents: number,
     }
     product: {
-        imagePath: string
+        imagePath: string,
+        name: string,
+        description: string,
     }
     downloadVerificationId: string
 }
@@ -61,6 +63,8 @@ export default function OrderInformation({
                 className='border border-solid border-gray-500 rounded-lg p-4 md:p-6 my-4'
             >
                 <Img 
+                    width='100%'
+                    alt={product.name}
                     src={`${process.env.NEXT_PUBLIC_SERVER_URL}${product.imagePath}`}
                 />
             </Section>

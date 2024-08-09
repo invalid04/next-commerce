@@ -5,6 +5,7 @@ type PurchaseReceiptEmailProps = {
     product: {
         name: string,
         imagePath: string,
+        description: string,
     }
     order: {
         id: string;
@@ -17,7 +18,8 @@ type PurchaseReceiptEmailProps = {
 PurchaseReceiptEmail.PreviewProps = {
     product: { 
         name: 'Product name',
-        imagePath: '/products/794c2e81-4a8c-439f-b649-7031848188c4-cartoon beaver  0f8c71d1-539d-45a9-b83a-bd22d2567cf5.png'
+        imagePath: '/products/794c2e81-4a8c-439f-b649-7031848188c4-cartoon beaver  0f8c71d1-539d-45a9-b83a-bd22d2567cf5.png',
+        description: 'description'
     },
     order: {
         id: crypto.randomUUID(),

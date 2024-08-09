@@ -38,7 +38,11 @@ export default function PurchaseReceiptEmail({
                 <Body className='font-sans bg-white'>
                     <Container className='max-w-xl'>
                         <Heading>Purchase Receipt</Heading>
-                        <OrderInformation />
+                        <OrderInformation 
+                            order={order}
+                            product={product}
+                            downloadVerificationId={downloadVerificationId}
+                        />
                     </Container>
                 </Body>
             </Tailwind>

@@ -1,4 +1,4 @@
-import { Html, Preview } from "@react-email/components"
+import { Body, Container, Head, Heading, Html, Preview, Tailwind } from "@react-email/components"
 
 type OrderHistoryEmailProps = {
     orders: {
@@ -47,6 +47,14 @@ export default function OrderHistoryEmail({
     return (
         <Html>
             <Preview>Order History & Downloads</Preview>
+            <Tailwind>
+                <Head />
+                <Body className='font-sans bg-white'>
+                    <Container className='max-w-xl'>
+                        <Heading>Order History</Heading>
+                    </Container>
+                </Body>
+            </Tailwind>
         </Html>
     )
 }

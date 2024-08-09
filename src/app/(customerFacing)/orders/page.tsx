@@ -1,6 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useFormStatus } from "react-dom";
 
 export default function MyOrdersPage() {
     return (
@@ -38,7 +40,16 @@ export default function MyOrdersPage() {
 }
 
 function SubmitButton() {
+    const { pending } = useFormStatus()
+
     return (
-        <h1>hi</h1>
+        <Button
+            className='w-full'
+            size='lg'
+            disabled={pending}
+            type='submit'
+        >
+            {pending ? 'Sending...' : 'Send'}
+        </Button>
     )
 }

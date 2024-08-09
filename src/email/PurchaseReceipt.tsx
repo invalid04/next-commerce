@@ -3,7 +3,8 @@ import OrderInformation from './components/OrderInformation'
 
 type PurchaseReceiptEmailProps = {
     product: {
-        name: string
+        name: string,
+        imagePath: string,
     }
     order: {
         id: string;
@@ -15,7 +16,8 @@ type PurchaseReceiptEmailProps = {
 
 PurchaseReceiptEmail.PreviewProps = {
     product: { 
-        name: 'Product name'
+        name: 'Product name',
+        imagePath: '794c2e81-4a8c-439f-b649-7031848188c4-cartoon beaver  0f8c71d1-539d-45a9-b83a-bd22d2567cf5.png'
     },
     order: {
         id: crypto.randomUUID(),

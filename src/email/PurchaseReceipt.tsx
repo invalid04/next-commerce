@@ -21,8 +21,8 @@ PurchaseReceiptEmail.PreviewProps = {
         id: crypto.randomUUID(),
         createdAt: new Date(),
         pricePaidInCents: 10000,
-    }
-    
+    },
+    downloadVerificationId: crypto.randomUUID()
 } satisfies PurchaseReceiptEmailProps
 
 export default function PurchaseReceiptEmail({

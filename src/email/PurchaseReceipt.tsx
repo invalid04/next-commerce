@@ -15,6 +15,11 @@ type PurchaseReceiptEmailProps = {
 PurchaseReceiptEmail.PreviewProps = {
     product: { 
         name: 'Product name'
+    },
+    order: {
+        id: crypto.randomUUID(),
+        createdAt: new Date(),
+        pricePaidInCents: 10000
     }
 } satisfies PurchaseReceiptEmailProps
 
